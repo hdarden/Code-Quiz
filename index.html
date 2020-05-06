@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+
     <!--linking style.css-->
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
@@ -21,11 +23,10 @@
 <body>
 
 <!--highscores nav link and timer "View highscores" link to score.html.... "Time: 0"-->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light" id="navbar">
         <a class="navbar-brand" style="color: purple" href="score.html">View Highscores</a>
         <!--timer link with JS-->
-        <span class="navbar-text">Timer:
-          </span>
+        <span class="navbar-text" id="timer">Timer: 0</span>
       </nav>
 <br>
 <br>
@@ -34,14 +35,14 @@
 <br>
 
 <!--main, includes quiz title, instructions, and start button-->
-    <main class="container text-center" >
+    <main class="container text-center" id="openingPage" >
       <!--centered h1 Coding Quiz Challenge -->
       <section class="quizTitle" style="font-size: 45px;">Coding Quiz Challenge</section>
 
 <br/>
 
       <!-- centered h3? instructions -->
-      <section class="instructions">
+      <section class="instructions" id="instructions">
 
         <p>Try to answer the following questions about Mickey Mouse within the time
         limit. Keep in mind that incorrect answers will penalize your scoretime
@@ -54,13 +55,15 @@
       <!--start button "Start quiz"-->
       <div class="btn-group-toggle" data-toggle="buttons">
         <label class="btn btn-secondary active">
-          <input type="checkbox" checked />Start Quiz!
+          <input type="checkbox" id="button" checked />Start Quiz!
         </label>
       </div>
     </main>
 
-    <!--Javascript link-->
-    <script scr="quiz.js"></script>
+   
+<!--Javascript link-->
+    <script src="script.js"></script>
+
 
   </body>
 </html>
