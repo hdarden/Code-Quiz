@@ -1,8 +1,11 @@
 //variables pulled from index.html
 
-var title = document.querySelector(".quizTitle");
+var openingPage = document.getElementById("openingPage");
 var instructions = document.getElementById("instructions");
 var timer = document.getElementById("timer");
+var startButton = document.getElementById("button");
+var score = secondsLeft--;
+var index = 0;
 
 //questions and answers
 var quiz = [
@@ -30,35 +33,87 @@ var quiz = [
   },
 ];
 
-
-var startButton = document.getElementById("button");
 //add event listener "click" to link start button to questions
-startButton.addEventListener("click", startQuiz);
-startButton.addEventListener("click", setTime);  
 
+startButton.addEventListener("click", function(setTime) {
+var secondsLeft = 60; 
 
 //when start button is clicked, timer starts counting backward from .60
 function setTime() {
+
   console.log("time");
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timer.textContent = "Timer: " + secondsLeft;
 
     if (secondsLeft === 0) {
-      //vv stops the timer
+      
       clearInterval(timerInterval);
-      //vv call highscore page.
+
       highScorePage();
     }
   }, 1000);
+  
 }
+setTime();
+})
 
 
-
+startButton.addEventListener("click", startQuiz);
 function startQuiz(){
-    console.log("started")
+    startQuiz.textContent = " ";
     
-}
+  //loop to pull questions and answers from the array.
+  for (var i = 0; i , quiz.length; i++){
+    var newButton = document.createElement("button");
+    newbutton.textContent = quiz[i].options;
+    //appendchild
+    
+      
+    }
+  }
+
+
+
+
+
+
+
+
+   /*  openingPage.textContent = "";
+    
+    var button1 = document.body.createElement("button");
+    document.body.appendChild(button1);
+    
+    var button2 = document.body.createElement("button");
+    document.body.appendChild(button2);
+    
+    var button3 = document.body.creatElement("button");
+    document.body.appendChild(button3);
+    
+    var button4 = document.body.createElement("button");
+    document.body.appendChild(button4); */
+
+
+
+    /* for (var i = 0; i < questions.length; i++) {
+      // Display current question to user and ask OK/Cancel
+      var answer = confirm(questions[i].q);
+
+      // Compare answers
+      if ((answer === true && questions[i].a === "t") ||
+        (answer === false && questions[i].a === "f")) {
+        // Increase score
+        score++;
+        alert("Correct!");
+      }
+      else {
+        alert("Wrong!");
+      }
+    }
+
+     */
+
 
   
 function selectAnswer (){
@@ -88,7 +143,6 @@ function selectAnswer (){
 
 //score, not sure how that is going to track with the timer
 var score = 0;
-
 var question = 0;
 var options = 0;
 var answers = 0;
