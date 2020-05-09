@@ -55,7 +55,7 @@ function startQuiz() {
 
 
 //when start button is clicked, timer starts counting backward from .30
-var secondsLeft = 5;
+var secondsLeft = 30;
 var timerInterval;
 function startTimer() {
     timerInterval = setInterval(function() {
@@ -132,6 +132,7 @@ function showQuizResults(){
   answers.textContent = "";
   answers.appendChild(input);
 
+  
 
 }
 
