@@ -4,4 +4,5 @@ For this code quiz I created and array of different questions, options, and answ
 # Link
 https://hdarden.github.io/Code-Quiz/
 
-![Mickey Mouse Quiz] (https://github.com/hdarden/Code-Quiz/issues/1#issue-615282650)
+![Mickey Mouse Quiz] <img width="1427" alt="Screen Shot 2020-05-09 at 7 37 38 PM" src="https://user-images.githubusercontent.com/63661120/81487762-a99cd500-922e-11ea-98c1-d048e7d22c26.png">
+
