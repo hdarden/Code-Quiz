@@ -1,69 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
 
+<head>
     <!--linking style.css-->
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--link bootstrap-->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-
-<!--browser tab title-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <!--browser tab title-->
     <title>Mickey Mouse Quiz</title>
-  </head>
-
+</head>
 <!--body/everything seen on page-->
-<body>
 
-<!--highscores nav link and timer "View highscores" link to score.html.... "Time: 0"-->
+<body>
+    <!--highscores nav link and timer "View highscores" link to score.html.... "Time: 0"-->
     <nav class="navbar navbar-light bg-light" id="navbar">
         <a class="navbar-brand" style="color: blue" href="score.html">View Highscores</a>
         <!--timer link with JS-->
         <span class="navbar-text" id="timer"></span>
-      </nav>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<!--main, includes quiz title, instructions, and start button-->
-    <main class="container text-center" id="openingPage" >
-      <!--centered h1 Coding Quiz Challenge -->
-      <section class="quizTitle" style="font-size: 45px;">Coding Quiz Challenge</section>
-
-<br/>
-
-      <!-- centered h3? instructions -->
-      <section class="instructions" id="instructions">
-
-        <p>Try to answer the following questions about Mickey Mouse within the time
-        limit. Keep in mind that incorrect answers will penalize your scoretime
-        by ten seconds!</p>
-        
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--main, includes quiz title, instructions, and start button-->
+    <main class="container text-center" id="openingPage">
+        <!--centered h1 Coding Quiz Challenge -->
+        <section class="quizTitle" style="font-size: 45px;">Coding Quiz Challenge</section>
+        <br />
+        <!-- centered h3? instructions -->
+        <section class="instructions" id="instructions">
+            <p>Try to answer the following questions about Mickey Mouse within the time
+                limit. Keep in mind that incorrect answers will penalize your scoretime
+                by ten seconds!</p>
         </section>
-
-<br/>
-
-      <!--start button "Start quiz"-->
-      <div class="btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-          <input type="checkbox" id="button" checked />Start Quiz!
-        </label>
-      </div>
+        <section class="answers" id="answers"></section>
+        <br />
+        <!--start button "Start quiz"-->
+        <div class="btn-group-toggle" data-toggle="buttons" id="buttonDiv">
+            <label class="btn btn-secondary active">
+                <input type="checkbox" id="button" checked />Start Quiz!
+            </label>
+        </div>
     </main>
+    <!--Javascript link-->
+    <script src="./script.js"></script>
+</body>
 
-   
-<!--Javascript link-->
-    <script src="script.js"></script>
-
-
-  </body>
 </html>
+
+
