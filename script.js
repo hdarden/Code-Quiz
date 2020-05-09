@@ -37,73 +37,113 @@ var quiz = [{
     },
 ];
 
-// //add event listener "click" to link start button to questions
 
-//Event listener. When click, it's going to start the quiz function
+// Event listener. When click, starts quiz function
 startButton.addEventListener("click", startQuiz);
+
 
 var index = 0;
 
-//calls timer function, hides start button, and calls the question
+// starts the timer, get the next question, hiding the button display
 function startQuiz() {
-  startTimer();
-  nextQuestion();
-
-  buttonDiv.style.display = "none";
+    console.log("starting quiz");
+    startTimer();
+    nextQuestion();
+    //clears start button display
+    buttonDiv.style.display = "none"
 }
 
+
+//when start button is clicked, timer starts counting backward from .30
+var secondsLeft = 5;
+var timerInterval;
+function startTimer() {
+    timerInterval = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = "Timer: " + secondsLeft;
+//when timer ends is calls end timer and show quiz results
+        if (secondsLeft === 0) {
+            endTimer();
+            showQuizResults();
+        }
+    }, 1000);
+}
 
 var currentQuizIndex = 0;
 function nextQuestion(){
-  //takes index of quiz questions
+
+    // index of the quiz questions
     var currentQuestion = quiz[currentQuizIndex];
-    // if there is no current question, then the quiz is over
+
+    // If there is no current question, then the quiz is over
     if(!currentQuestion){
-      //calls end quiz function
       endQuiz();
-      //return will end the next question function and return that value.
+      // return will end the function.
       return null;
     }
+    // Clear the answers
+    answers.textContent = "";
+    // Set the instruction to match the new question
+    instructions.textContent = currentQuestion.question;
 
-  //answers content is cleared from the page  
-  answers.textContent = "";
-  //instructions text takes place of new question
-  instructions.textContent = currentQuestion.question;
-
-  //add for loop to pull questions and answers from the quiz array
-}
-
-
-function showQuizResults(){
-//insert for loop to compare results
-
-//if then statement 
-
-}
-
-var secondsLeft = 30;
-var timerInterval;
-function startTimer(){
-  timerInterval = setInterval(function(){
-    secondsLeft--;
-    timer.textContent = "Timer: " + secondsLeft;
-
-    if (secondsLeft === 0){
-      endTimer();
+    //loop to pull questions and answers from the array.
+    for (var i = 0; i < currentQuestion.options.length; i++) {
+        var choice = currentQuestion.options[i];
+        var newButton = document.createElement("button");
+        newButton.textContent = choice;
+        //setting a data attribute to store information
+        newButton.setAttribute("data-index", i); 
+       
+        // Event listener on the newbutton
+        newButton.addEventListener('click', function(event) {
+            // All events are passed into the function in event listener. The target is the element where the event occurred
+            var target = event.target;
+            //The element is also the same element that we wrote the data-index to. So we can recall that stored value, and use it now
+            var index = target.getAttribute("data-index");
+            // ParseInt takes a string and turns it into a integer
+            quiz[currentQuizIndex].userAnswer = parseInt(index);
+            currentQuizIndex++;
+            //Calls this same function again
+            nextQuestion();
+        })
+        //append the newButton into the answers field
+        answers.appendChild(newButton);
     }
-  }, 1000);
+}
+
+// called when timer ends or last question
+function showQuizResults(){
+  var correctAnswers = 0;
+
+  for(var x = 0; x < quiz.length; x++){
+
+    // compares correct and user answers
+    if(quiz[x].correctAnswer == quiz[x].userAnswer ){
+      // increment correct answers
+      correctAnswers++;
+
+    }
+  }
+  // display the results
+  instructions.textContent = "Results: You got " + correctAnswers + " out of " + quiz.length + "correct.";
+
+  // clear answer content
+  var input = document.createElement("input");
+  answers.textContent = "";
+  answers.appendChild(input);
+
+
 }
 
 
-
-function endTimer(){
-//clears timer
-
-}
-
-
-//calls end timer and shows results
+//Ends the timer, shows results
 function endQuiz(){
   endTimer();
   showQuizResults();
+ 
 }
+//ends timer, keeps it from tracking negative numbers
+function endTimer(){
+  clearInterval(timerInterval);
+}
+
